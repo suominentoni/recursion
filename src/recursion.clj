@@ -7,7 +7,7 @@
        (product (rest coll)))))
 
 (defn singleton? [coll]
-  (if (nil? (first coll))
+  (if (empty? coll)
     false
     (if (empty? (rest coll))
       true
