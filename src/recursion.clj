@@ -89,7 +89,13 @@
   '()))
 
 (defn power [n k]
-  :-)
+  (cond
+    (zero? k)
+      1
+    (< k 1)
+      n
+    :else
+      (* n (power n (dec k)))))
 
 (defn fib [n]
   :-)
