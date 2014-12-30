@@ -98,19 +98,41 @@
       (* n (power n (dec k)))))
 
 (defn fib [n]
-  :-)
+  (cond
+    (= n 0)
+      0
+    (= n 1)
+      1
+    :else
+      (+ (fib (- n 1)) (fib (- n 2)))))
 
 (defn my-repeat [how-many-times what-to-repeat]
-  [:-])
+  (cond
+    (<= how-many-times 0)
+      ()
+    :else
+      (cons what-to-repeat (my-repeat (dec how-many-times) what-to-repeat))))
 
 (defn my-range [up-to]
-  [:-])
+  (cond
+    (= up-to 0)
+      ()
+    :else
+      (cons (dec up-to) (my-range (dec up-to)))))
 
 (defn tails [a-seq]
-  [:-])
+  (cond
+    (= (count a-seq) 0)
+      (cons a-seq '())
+    :else
+      (cons a-seq (tails (rest a-seq)))))
 
 (defn inits [a-seq]
-  [:-])
+  (cond
+    (= (count a-seq) 0)
+      (cons a-seq '())
+    :else
+      (cons a-seq (inits (drop-last a-seq)))))
 
 (defn rotations [a-seq]
   [:-])
