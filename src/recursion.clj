@@ -134,8 +134,19 @@
     :else
       (cons a-seq (inits (drop-last a-seq)))))
 
+(defn rotations-helper [i a-seq]
+  (cond
+    (= (count a-seq) i)
+      '()
+  :else
+    (cons a-seq (rotations-helper (inc i) (cons (last a-seq) (drop-last a-seq))))))
+
 (defn rotations [a-seq]
-  [:-])
+  (cond
+    (= (count a-seq) 0)
+      '(())
+  :else
+    (rotations-helper 0 a-seq)))
 
 (defn my-frequencies-helper [freqs a-seq]
   [:-])
