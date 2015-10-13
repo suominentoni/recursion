@@ -149,13 +149,26 @@
     (rotations-helper 0 a-seq)))
 
 (defn my-frequencies-helper [freqs a-seq]
-  [:-])
+  (cond (empty? a-seq)
+    freqs
+  :else
+    (if (contains? freqs (first a-seq))
+      (my-frequencies-helper (merge freqs {(first a-seq) (inc (get freqs (first a-seq)))}) (rest a-seq))
+      (my-frequencies-helper (merge freqs {(first a-seq) 1}) (rest a-seq)))))
 
 (defn my-frequencies [a-seq]
-  [:-])
+  (my-frequencies-helper {} a-seq))
+
+(defn un-frequencies-helper [unfreqs a-map]
+  (let [first-amount (second (first a-map))
+        first-value (first (first a-map))]
+  (cond (empty? a-map)
+    unfreqs
+  :else
+    (un-frequencies-helper (concat unfreqs (repeat first-amount first-value)) (rest a-map)))))
 
 (defn un-frequencies [a-map]
-  [:-])
+    (un-frequencies-helper '() a-map))
 
 (defn my-take [n coll]
   [:-])
